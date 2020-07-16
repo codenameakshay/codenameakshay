@@ -1,6 +1,7 @@
 ### Hi there 👋
 
 **I am Akshay Maurya, and here are some things you should know about me**
+![Akshay's github stats](https://github-readme-stats.vercel.app/api?username=codenameakshay&show_icons=true&title_color=00FFFF&icon_color=00FFFF&text_color=ADADAD&bg_color=2F2F2F)
 
 🚀Studying Electronics and Communication Engineering (B.E.) from Netaji Subhas University of Technology (NSIT) , Delhi.👨‍🎓
 
