@@ -18,11 +18,12 @@
 🚀Designed `100+ circuits`, and realized them using `PSPICE AD`, `Fritzing`, `EagleCAD`, `TinkerCAD` and more.👨‍🔧
 - [PSPICE Code for circuits](https://github.com/codenameakshay/pspice-circuits)
 
-🚀Developed `Prism Wallpapers`, which now has over `500+ downloads` on Play Store with an amazing `4.8` rating.📱
+🚀Developed `Prism Wallpapers`, which now has over `15K+ downloads` on Play Store with an amazing `4.2` rating.📱
 - [Prism Wallpapers](https://play.google.com/store/apps/details?id=com.hash.prism)
 
 🚀Developed `30+ Android Apps` using Flutter.📱
 - [Ariel News App](https://github.com/Hash-Studios/ariel-news-app)
+- [E-Learn Education App](https://github.com/Hash-Studios/e-learning-app)
 - [Tizeno Notes App](https://github.com/Hash-Studios/flutter-notes-app)
 - [AlgoKing Algorithm Toolbox](https://github.com/Hash-Studios/algoking)
 - [ChatMe Chat App](https://github.com/Hash-Studios/chatme-flutter)
@@ -39,7 +40,7 @@
 
 🚀Knows `UX/UI` designing and has designed `30+ apps` using Figma.📱
 
-🚀Currently learning `Golang` and `C#`.➕
+🚀Currently learning `TensorFlow`, `Golang` and `C#`.➕
 
 I also realize great `experiences`.🤟
 
