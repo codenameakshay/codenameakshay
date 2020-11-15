@@ -18,10 +18,10 @@
 🚀Designed `100+ circuits`, and realized them using `PSPICE AD`, `Fritzing`, `EagleCAD`, `TinkerCAD` and more.👨‍🔧
 - [PSPICE Code for circuits](https://github.com/codenameakshay/pspice-circuits)
 
-🚀Developed `Prism Wallpapers`, which now has over `15K+ downloads` on Play Store with an amazing `4.2` rating.📱
+🚀Developed `Prism Wallpapers`, which now has over `35K+ downloads` on Play Store with an amazing `4.5` rating.📱
 - [Prism Wallpapers](https://play.google.com/store/apps/details?id=com.hash.prism)
 
-🚀Developed `30+ Android Apps` using Flutter.📱
+🚀Developed `35+ Android Apps` using Flutter.📱
 - [Ariel News App](https://github.com/Hash-Studios/ariel-news-app)
 - [E-Learn Education App](https://github.com/Hash-Studios/e-learning-app)
 - [Tizeno Notes App](https://github.com/Hash-Studios/flutter-notes-app)
@@ -35,7 +35,7 @@
 - [Matte Look Portfolio](https://github.com/codenameakshay/web-matte-ui)
 
 🚀Knows photo-editing, video editing and has been editing them since 2014 using `Adobe Photoshop`, `Adobe Premiere Pro`, `Adobe After Effects` and `Adobe Lightroom`.📷
-- [Youtube Channel](https://www.youtube.com/c/AbAkMaurya)
+- [ShiftPlus YouTube](https://www.youtube.com/c/ShiftPlus)
 - [@codename_photographer](https://www.instagram.com/codename_photographer/)
 
 🚀Knows `UX/UI` designing and has designed `30+ apps` using Figma.📱
