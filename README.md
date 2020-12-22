@@ -5,21 +5,14 @@
 
 🚀Studying Electronics and Communication Engineering (B.E.) from Netaji Subhas University of Technology (NSIT) , Delhi.👨‍🎓
 
-🚀Knows `Python`, `C++` and `DART` languages. Has developed many projects in them ranging from Embedded C++ Robot to DART based COVID-19 Tracking Android App.👨‍💻
-- [TV Remote controlled Robot](https://www.youtube.com/watch?v=sdqh5I6HW88)
-- [Repeat you Keyboard and mouse using Python](https://github.com/codenameakshay/macro-repeater)
-- [Stay Safe COVID-19 App](https://blog-bd6w.onrender.com/2020/04/16/corona/)
-
-🚀Developed `Web-scraping` scripts, bots including `Telegram bots`, `Twitter bots` and web apps.👨‍💻
-- [Telegram-Twitter Bot](https://github.com/codenameakshay/telegram-twitter-bot)
-- [Telegram News Bot](https://blog-bd6w.onrender.com/2020/04/28/telepybot/)
-- [Sensex Predictor](https://github.com/codenameakshay/sensex-matlab-predictor)
-
-🚀Designed `100+ circuits`, and realized them using `PSPICE AD`, `Fritzing`, `EagleCAD`, `TinkerCAD` and more.👨‍🔧
-- [PSPICE Code for circuits](https://github.com/codenameakshay/pspice-circuits)
-
-🚀Developed `Prism Wallpapers`, which now has over `35K+ downloads` on Play Store with an amazing `4.5` rating.📱
+🚀Developed `Prism Wallpapers`, which now has over `50K+ downloads` on Play Store with an amazing `4.6` rating.📱
 - [Prism Wallpapers](https://play.google.com/store/apps/details?id=com.hash.prism)
+
+🚀Developed `Eva - Your AI Health Coach`, for `The Healthy Company`.📱
+- [Eva - Your AI Health Coach](https://apps.apple.com/in/app/eva-ai-health-coach/id1511776633)
+- [The Healthy Company](https://www.thehealthycompany.in/)
+
+🚀Worked on projects using Firebase Cloud Firestore, Realtime Database, Firebase Storage, Firebase Cloud Messaging, Firebase Dynamic Links, Remote Config, Firebase Analytics, Firebase Authentication, and Firebase Crashlytics.
 
 🚀Developed `35+ Android Apps` using Flutter.📱
 - [Ariel News App](https://github.com/Hash-Studios/ariel-news-app)
@@ -33,6 +26,19 @@
 - [codenameakshay.tech](http://codenameakshay.tech/)
 - [DarkWeb Dev Portfolio](https://codenameakshay.github.io/darkweb-template/)
 - [Matte Look Portfolio](https://github.com/codenameakshay/web-matte-ui)
+
+🚀Knows `Python`, `C++` and `DART` languages. Has developed many projects in them ranging from Embedded C++ Robot to DART based COVID-19 Tracking Android App.👨‍💻
+- [TV Remote controlled Robot](https://www.youtube.com/watch?v=sdqh5I6HW88)
+- [Repeat you Keyboard and mouse using Python](https://github.com/codenameakshay/macro-repeater)
+- [Stay Safe COVID-19 App](https://blog-bd6w.onrender.com/2020/04/16/corona/)
+
+🚀Developed `Web-scraping` scripts, bots including `Telegram bots`, `Twitter bots` and web apps.👨‍💻
+- [Telegram-Twitter Bot](https://github.com/codenameakshay/telegram-twitter-bot)
+- [Telegram News Bot](https://blog-bd6w.onrender.com/2020/04/28/telepybot/)
+- [Sensex Predictor](https://github.com/codenameakshay/sensex-matlab-predictor)
+
+🚀Designed `100+ circuits`, and realized them using `PSPICE AD`, `Fritzing`, `EagleCAD`, `TinkerCAD` and more.👨‍🔧
+- [PSPICE Code for circuits](https://github.com/codenameakshay/pspice-circuits)
 
 🚀Knows photo-editing, video editing and has been editing them since 2014 using `Adobe Photoshop`, `Adobe Premiere Pro`, `Adobe After Effects` and `Adobe Lightroom`.📷
 - [ShiftPlus YouTube](https://www.youtube.com/c/ShiftPlus)
