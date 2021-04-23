@@ -27,14 +27,14 @@
 
 -------------
 ### Links
-- **Linkedin:** [codenameakshay](https://www.linkedin.com/in/codenameakshay/)
-- **GitHub:** [codenameakshay](https://github.com/codenameakshay/)
-- **Twitter:** [codenameakshay](https://twitter.com/codenameakshay)
-- **Instagram:** [codename_photographer](https://www.instagram.com/codename_photographer/)
-- **YouTube:** [ShiftPlus](https://www.youtube.com/channel/UCBSEFstqptgtYsLSAdq8tKg)
-- **Reddit:** [CodeNameAkshay](https://www.reddit.com/user/CodeNameAkshay)
-- **Telegram:** [codenameakshay](https://t.me/codenameakshay)
-- **Discord:** [codenameakshay](http://discord.gg/H4FHtqeSDa)
+- <a href="http://discord.gg/H4FHtqeSDa"><img alt="Discord" title="Discord" height="24" width="24" src="https://raw.githubusercontent.com/codenameakshay/codenameakshay/master/assets/uil_discord.svg"></a> **:** [codenameakshay](http://discord.gg/H4FHtqeSDa)
+- <a href="https://github.com/codenameakshay/"><img alt="GitHub" title="GitHub" height="24" width="24" src="https://raw.githubusercontent.com/codenameakshay/codenameakshay/master/assets/uil_github-alt.svg"></a> **:** [codenameakshay](https://github.com/codenameakshay/)
+- <a href="https://www.instagram.com/codename_photographer/"><img alt="Instagram" title="Instagram" height="24" width="24" src="https://raw.githubusercontent.com/codenameakshay/codenameakshay/master/assets/uil_instagram.svg"></a> **:** [codename_photographer](https://www.instagram.com/codename_photographer/)
+- <a href="https://www.linkedin.com/in/codenameakshay/"><img alt="LinkedIn" title="LinkedIn" height="24" width="24" src="https://raw.githubusercontent.com/codenameakshay/codenameakshay/master/assets/uil_linkedin-alt.svg"></a> **:** [codenameakshay](https://www.linkedin.com/in/codenameakshay/)
+- <a href="https://www.reddit.com/user/CodeNameAkshay"><img alt="Reddit" title="Reddit" height="24" width="24" src="https://raw.githubusercontent.com/codenameakshay/codenameakshay/master/assets/uil_reddit-alien-alt.svg"></a> **:** [CodeNameAkshay](https://www.reddit.com/user/CodeNameAkshay)
+- <a href="https://t.me/codenameakshay"><img alt="Telegram" title="Telegram" height="24" width="24" src="https://raw.githubusercontent.com/codenameakshay/codenameakshay/master/assets/uil_telegram-alt.svg"></a> **:** [codenameakshay](https://t.me/codenameakshay)
+- <a href="https://twitter.com/codenameakshay/"><img alt="Twitter" title="Twitter" height="24" width="24" src="https://raw.githubusercontent.com/codenameakshay/codenameakshay/master/assets/uil_twitter-alt.svg"></a> **:** [codenameakshay](https://twitter.com/codenameakshay)
+- <a href="https://www.youtube.com/channel/UCBSEFstqptgtYsLSAdq8tKg"><img alt="YouTube" title="YouTube" height="24" width="24" src="https://raw.githubusercontent.com/codenameakshay/codenameakshay/master/assets/uil_youtube.svg"></a> **:** [ShiftPlus](https://www.youtube.com/channel/UCBSEFstqptgtYsLSAdq8tKg)
 
 -------------
-![Akshay's Profile Views](https://komarev.com/ghpvc/?username=LiquidatorCoder&color=74ff0a&label=Stalker)
+![Akshay's Profile Views](https://komarev.com/ghpvc/?username=LiquidatorCoder&color=74ff0a&label=Stalkers)
