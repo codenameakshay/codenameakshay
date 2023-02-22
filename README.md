@@ -1,13 +1,15 @@
-![Cover](https://pbs.twimg.com/profile_banners/1035583255829831681/1615123970/1500x500)
+### ⚠️ Warning: Portfolio website is in development ⚠️
+
+![Cover](https://pbs.twimg.com/profile_banners/1035583255829831681/1676198674/1500x500)
 
 -------------
 ### Skills
 
-- **Programming Languages:** C, C++, Python, DART, (C# & GoLang)
+- **Programming Languages:** C, C++, Python, DART, JS, (C# & GoLang)
 - **Hardware Languages:** PSPICE, Embedded C++, VHDL, MATLAB
-- **Frameworks:** Flutter, Bootstrap, Arduino, Unity, Hugo
+- **Frameworks:** Flutter, ReactJS, Tailwind, Bootstrap, Arduino, Unity, Hugo
 - **Data Essentials:** Firebase, MongoDB, JSON, Hive, MySQL
-- **Backend:** Flask, Strapi (CMS)
+- **Backend:** Flask, Django, AWS, Strapi (CMS)
 - **Software Essentials:** Git, WSL, Terminal, VSCode
 - **Designing:** Adobe Photoshop, Blender, Figma
 - **Other:** Microsoft Office, GitHub
@@ -21,9 +23,11 @@
 
 -------------
 ### Projects
-- **[Prism Wallpapers:](https://play.google.com/store/apps/details?id=com.hash.prism)** Android Application with over 70K+ downloads
+- **[qoohoo:](https://qoohoo.in/)** Cross-platform creator economy products and services (I made app, and website)
+- **[Lishash:](https://lishash.com/)** Android, iOS app for social music listening and a connected experience
+- **[Prism Wallpapers:](https://play.google.com/store/apps/details?id=com.hash.prism)** Android Application with over 300K+ downloads (deprecated)
 - **[Eva AI Health:](https://play.google.com/store/apps/details?id=com.nsit.thehealthcompany)** Android, iOS Application for The Healthy Company
-- **[BuzzFire:](https://play.google.com/store/apps/details?id=com.hash.buzzfire)** A cross-platform application using Flutter
+- **[BuzzFire:](https://play.google.com/store/apps/details?id=com.hash.buzzfire)** News app, I made for customisation community (deprecated)
 
 -------------
 ### Links
