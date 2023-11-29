@@ -3,11 +3,17 @@
 ![Cover](https://pbs.twimg.com/profile_banners/1035583255829831681/1676198674/1500x500)
 
 -------------
+### Transitioning into AI
+- In the recent 6 months, I have picked up AI, i.e. specifically LLMs, and have been working on that.
+- I have contributed to popular open-source LLM frameworks like LangchainJS & Langfuse.
+- During this time, I built an advanced LLM-RAG chain for [kalam.in](https://kalam.in/), and I am writing a blog on it.
+
+-------------
 ### Skills
 
 - **Programming Languages:** C, C++, Python, DART, JS, (C# & GoLang)
 - **Hardware Languages:** PSPICE, Embedded C++, VHDL, MATLAB
-- **Frameworks:** Flutter, ReactJS, Tailwind, Bootstrap, Arduino, Unity, Hugo
+- **Frameworks:** Flutter, NextJS, ReactJS, Tailwind, Bootstrap, Arduino, Unity, Hugo
 - **Data Essentials:** Firebase, MongoDB, JSON, Hive, MySQL
 - **Backend:** Flask, Django, AWS, Strapi (CMS)
 - **Software Essentials:** Git, WSL, Terminal, VSCode
@@ -23,6 +29,7 @@
 
 -------------
 ### Projects
+- **[kalam.in](https://kalam.in/)** Your Personal Mentor & discipline inducing learning ecosystem (I worked on website, and the LLM, RAG part)
 - **[qoohoo:](https://qoohoo.in/)** Cross-platform creator economy products and services (I made app, and website)
 - **[Lishash:](https://lishash.com/)** Android, iOS app for social music listening and a connected experience
 - **[Prism Wallpapers:](https://play.google.com/store/apps/details?id=com.hash.prism)** Android Application with over 300K+ downloads (deprecated)
