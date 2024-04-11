@@ -3,14 +3,26 @@
 ![Cover](https://pbs.twimg.com/profile_banners/1035583255829831681/1676198674/1500x500)
 
 -------------
-### Transitioning into AI
-- In the recent 6 months, I have picked up AI, i.e. specifically LLMs, and have been working on that.
-- I have contributed to popular open-source LLM frameworks like LangchainJS & Langfuse.
-- During this time, I built an advanced LLM-RAG chain for [kalam.in](https://kalam.in/), and I am writing a blog on it.
+### Projects
+- **[SuperKalam](https://superkalam.com/)** Your Personal AI Mentor & discipline inducing learning ecosystem (I worked on website ([dashboard](https://dashboard.superkalam.com/summary), [chat](https://superkalam.com/chat)), on LLM chains (internet RAG, mcq Generation) & some other pretty cool stuff)
+- **[qoohoo:](https://qoohoo.in/)** Cross-platform creator economy products and services (I made app, and website) (overall the product is deprecated)
+- **[One4Wall:](https://www.producthunt.com/products/one4wall#one4wall)** Wallpaper app for Android & iOS -> with over 1M+ downloads (worked as a freelancer, [pretty slick and unique UI/UX](https://twitter.com/codenameakshay/status/1688783646164209664), sadly the client remade the app, but you can still see my work on this product hunt link) (This was first app to be based on my unique riverpod-firebase arch app, which is still in dev so not public yet)
+- **[Lishash:](https://lishash.com/)** Android, iOS app for social music listening and a connected experience (I worked as an intern, and worked on chat + music experience)
+- **[Prism Wallpapers:](https://github.com/Hash-Studios/Prism)** Android Application with over 300K+ downloads (deprecated, sadly -> I made this from scratch)
+- **[Eva AI Health:](https://play.google.com/store/apps/details?id=com.nsit.thehealthcompany)** Android, iOS Application for The Healthy Company (My first internship, please be easy on me)
+- **[BuzzFire:](https://play.google.com/store/apps/details?id=com.hash.buzzfire)** News app, I made for customisation community (deprecated, yet again Play Store guidelines strike)
+- **[Pub.dev packages:](https://pub.dev/publishers/hashstudios.dev/packages)** Some of my famous open-source packages for Flutter (I do maintain them)
+- **[PokerFace:](https://apps.apple.com/no/app/pokerface/id6477531089)** Texas Hold'em strategy app (my first solo side-project in years, and yes I am banned from using this app near my friends) (Also this is [public](https://github.com/codenameakshay/pokerface-flutter/) -> giving back to open-source)
+
+[//]: # (### Transitioning into AI)
+[//]: # (- In the recent 6 months, I have picked up AI, i.e. specifically LLMs, and have been working on that.)
+[//]: # (- I have contributed to popular open-source LLM frameworks like LangchainJS & Langfuse.)
+[//]: # (- During this time, I built an advanced LLM-RAG chain for kalam.in, and I am writing a blog on it.)
 
 -------------
 ### Skills
 
+- **AI:** OpenAI, LangChain, Langsmith, and the most needed -> Google Sheets expert
 - **Programming Languages:** C, C++, Python, DART, JS, (C# & GoLang)
 - **Hardware Languages:** PSPICE, Embedded C++, VHDL, MATLAB
 - **Frameworks:** Flutter, NextJS, ReactJS, Tailwind, Bootstrap, Arduino, Unity, Hugo
@@ -26,15 +38,6 @@
 |  Stats      | Langs           | Streak  |
 |:-------------:|:-------------:|:-----:|
 | ![Akshay's github stats](https://github-readme-stats.vercel.app/api?username=codenameakshay&show_icons=true&theme=dark)      | [![Akshay's Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=codenameakshay&layout=compact&theme=dark)](https://github.com/codenameakshay?tab=repositories) | [![Akshay's GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=codenameakshay&theme=dark)](https://github.com/codenameakshay?tab=repositories) |
-
--------------
-### Projects
-- **[kalam.in](https://kalam.in/)** Your Personal Mentor & discipline inducing learning ecosystem (I worked on website, and the LLM, RAG part)
-- **[qoohoo:](https://qoohoo.in/)** Cross-platform creator economy products and services (I made app, and website)
-- **[Lishash:](https://lishash.com/)** Android, iOS app for social music listening and a connected experience
-- **[Prism Wallpapers:](https://play.google.com/store/apps/details?id=com.hash.prism)** Android Application with over 300K+ downloads (deprecated)
-- **[Eva AI Health:](https://play.google.com/store/apps/details?id=com.nsit.thehealthcompany)** Android, iOS Application for The Healthy Company
-- **[BuzzFire:](https://play.google.com/store/apps/details?id=com.hash.buzzfire)** News app, I made for customisation community (deprecated)
 
 -------------
 ### Links
