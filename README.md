@@ -13,6 +13,7 @@ AI-first engineer from Bengaluru. I ship mobile apps (Flutter, SwiftUI), web pro
 - **[dart_tui](https://github.com/codenameakshay/dart_tui)** — Elm-style terminal UI framework for Dart (Bubble Tea port). [pub.dev](https://pub.dev/packages/dart_tui)
 - **[deploy-hermes](https://github.com/codenameakshay/deploy-hermes)** — open-source managed hosting for Hermes AI agents; deploy to Telegram / Discord / Slack in one click. [deploy-hermes.com](https://deploy-hermes.com)
 - **[sell-a-key](https://github.com/codenameakshay/sell-a-key)** — rent real keyboard keys as time-slotted traffic redirects. [rentaikey.com](https://rentaikey.com)
+- **[lumen](https://github.com/codenameakshay/lumen)** — ambient LED-matrix display (ESP32 + MAX7219) driven entirely from a polished web app: world clock, weather, crypto ticker, Spotify now-playing, webhooks, and OTA updates over WiFi.
 
 -------------
 ### Previously @ CRED — until March 2026
@@ -30,7 +31,7 @@ CRED's bar for design and craft is the highest I've worked at; it shaped how I n
 
 - **[Hash Studios](https://www.hashstudios.in/)** — my design & engineering studio. Home of [Prism](https://github.com/Hash-Studios/Prism) — an open-source Flutter wallpapers app (⭐638, 300K+ downloads) that I've been maintaining since 2020 and am rebuilding as v3.0.
 - **[SuperKalam](https://superkalam.com/)** — *Your Personal AI Mentor.* Worked on the web app ([dashboard](https://dashboard.superkalam.com/summary), [chat](https://superkalam.com/chat)) and LLM pipelines (internet-RAG, MCQ generation).
-- **Infimine (2025)** — built the landing page + native Swift iOS app. [Landing](https://infimine-landing.vercel.app).
+- **Infimine (2025)** — built the landing page + [native Swift iOS app](https://github.com/codenameakshay/infimine-swift). [Landing](https://infimine-landing.vercel.app).
 - **[One4Wall](https://www.producthunt.com/products/one4wall#one4wall)** — wallpaper app with **1M+ downloads** across Android & iOS. Freelance build with a [distinctive UI/UX](https://twitter.com/codenameakshay/status/1688783646164209664) (the client later rebuilt it; the original is still on Product Hunt).
 - **[qoohoo](https://qoohoo.in/)** — cross-platform creator-economy products (app + web). I built both; the product is now deprecated.
 - **Lishash** — Android/iOS social music-listening app (internship). Owned chat + music experience.
@@ -49,15 +50,17 @@ CRED's bar for design and craft is the highest I've worked at; it shaped how I n
 -------------
 ### Open-source packages
 
-Published on pub.dev via **[@hashstudios.dev](https://pub.dev/publishers/hashstudios.dev/packages)**:
+Published on pub.dev via **[@hashstudios.dev](https://pub.dev/publishers/hashstudios.dev/packages)** (two newest publishing soon):
 
 | Package | Description | Stars |
 |---|---|:---:|
 | [ai_sdk_dart](https://pub.dev/packages/ai_sdk_dart) | Vercel AI SDK, ported to Dart/Flutter | new |
 | [dart_tui](https://pub.dev/packages/dart_tui) | Elm-style TUI framework (Bubble Tea port) | new |
-| [flutter_floating_bottom_bar](https://github.com/codenameakshay/flutter-floating-bottom-bar) | Animated floating bottom navigation | ⭐36 |
-| [async_wallpaper](https://github.com/codenameakshay/async_wallpaper) | Set wallpapers from Flutter on Android | ⭐25 |
-| [secure_content](https://github.com/codenameakshay/secure_content) | Block screenshots & screen recording (iOS + Android) | ⭐8 |
+| [cupertino_sheet](https://github.com/codenameakshay/cupertino_sheet) | iOS 26-accurate Flutter bottom sheet (Liquid Glass, concentric corners) | soon |
+| [beui](https://github.com/codenameakshay/beui) | Spring-physics motion components for Flutter (beUI port) | soon |
+| [flutter_floating_bottom_bar](https://github.com/codenameakshay/flutter-floating-bottom-bar) | Animated floating bottom navigation | ⭐38 |
+| [async_wallpaper](https://github.com/codenameakshay/async_wallpaper) | Set wallpapers from Flutter on Android | ⭐26 |
+| [secure_content](https://github.com/codenameakshay/secure_content) | Block screenshots & screen recording (iOS + Android) | ⭐9 |
 
 Notable older repos: [image-editor](https://github.com/codenameakshay/image-editor) (⭐58), [kai-qoohoo](https://github.com/codenameakshay/kai-qoohoo) (⭐35), [Hash-Studios/ggsipu_notice](https://github.com/Hash-Studios/ggsipu_notice) (⭐24), [telegram-twitter-bot](https://github.com/codenameakshay/telegram-twitter-bot) (⭐10).
 
@@ -69,7 +72,7 @@ The past year I've gone deep on LLMs and AI-native product development:
 - Contributed upstream to **LangChainJS** and **Langfuse**
 - Shipped production LLM-RAG chains (internet-RAG, MCQ generation for SuperKalam)
 - Authored **[ai_sdk_dart](https://github.com/codenameakshay/ai_sdk_dart)** — a complete Dart/Flutter port of Vercel AI SDK v6
-- Built tooling on top of Claude + MCP (a Telegram bot for Claude, agent hosting platforms)
+- Built tooling on top of Claude + MCP (a [Telegram bot for Claude](https://github.com/codenameakshay/claude-telegram-bot), agent hosting platforms)
 
 -------------
 ### Skills
