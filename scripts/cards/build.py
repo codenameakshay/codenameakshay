@@ -18,7 +18,9 @@ import io
 import json
 import os
 import random
+import re
 import sys
+import tempfile
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
@@ -114,8 +116,9 @@ class Fonts:
 
     def _instance_bytes(self, weight: int) -> bytes:
         if weight not in self._bytes:
-            vf = TTFont(self.path)
+            vf = TTFont(self.path, recalcTimestamp=False)
             inst = instancer.instantiateVariableFont(vf, {"wght": weight}, inplace=True)
+            inst.recalcTimestamp = False
             buf = io.BytesIO()
             inst.save(buf)
             self._bytes[weight] = buf.getvalue()
@@ -123,7 +126,7 @@ class Fonts:
 
     def _metrics_for(self, weight: int):
         if weight not in self._metrics:
-            f = TTFont(io.BytesIO(self._instance_bytes(weight)))
+            f = TTFont(io.BytesIO(self._instance_bytes(weight)), recalcTimestamp=False)
             self._metrics[weight] = (f.getBestCmap(), f["hmtx"], f["head"].unitsPerEm)
         return self._metrics[weight]
 
@@ -138,7 +141,7 @@ class Fonts:
         return max(hmtx[cmap[ord(d)]][0] for d in "0123456789") * size / upm
 
     def face_css(self, weight: int, chars: str) -> str:
-        f = TTFont(io.BytesIO(self._instance_bytes(weight)))
+        f = TTFont(io.BytesIO(self._instance_bytes(weight)), recalcTimestamp=False)
         opts = subset.Options()
         opts.flavor = "woff2"
         opts.desubroutinize = True
@@ -330,7 +333,7 @@ def stat(theme: str, value: str, label: str, index: int) -> str:
         if ch.isdigit():
             d = int(ch)
             cid = c.clip(x - 1, y - 30, colw + 2, 40)
-            c.add(f'<g clip-path="url(#{cid})"><g class="d roll{d}" style="animation-delay:{delay + col * 0.09:.2f}s">')
+            c.add(f'<g clip-path="url(#{cid})"><g class="d roll{d}" style="transform:translateY(-{(10 + d) * L}px);animation-delay:{delay + col * 0.09:.2f}s">')
             for i in range(20):
                 c.text(x + colw / 2, y + i * L, str(i % 10), size, weight, t["text"], anchor="middle")
             c.add("</g></g>")
@@ -768,18 +771,33 @@ def fetch_json(url: str, headers: dict | None = None):
         return json.load(r)
 
 
+def valid_version(value) -> bool:
+    return (isinstance(value, str)
+            and re.fullmatch(r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?", value) is not None
+            and FONTS.measure("v" + value, 500, 10) + 14 <= COL - 44)
+
+
 def refresh_live() -> dict:
     live = load_live()  # start from the last good numbers; a failed fetch keeps them
     for _, name, _ in PACKAGES:
         try:
-            live["versions"][name] = fetch_json(f"https://pub.dev/api/packages/{name}")["latest"]["version"]
-            live["downloads"][name] = fetch_json(f"https://pub.dev/api/packages/{name}/score")["downloadCount30Days"]
+            version = fetch_json(f"https://pub.dev/api/packages/{name}")["latest"]["version"]
+            downloads = fetch_json(f"https://pub.dev/api/packages/{name}/score")["downloadCount30Days"]
+            if not valid_version(version):
+                raise ValueError("invalid version")
+            if type(downloads) is not int or downloads < 0:
+                raise ValueError("invalid download count")
+            live["versions"][name] = version
+            live["downloads"][name] = downloads
         except Exception as e:  # keep going; a stale number beats a broken build
             print(f"warn: pub.dev {name}: {e}", file=sys.stderr)
     token = os.environ.get("GITHUB_TOKEN")
     gh_headers = {"Authorization": f"Bearer {token}"} if token else {}
     try:
-        live["prism_stars"] = fetch_json("https://api.github.com/repos/Hash-Studios/Prism", gh_headers)["stargazers_count"]
+        stars = fetch_json("https://api.github.com/repos/Hash-Studios/Prism", gh_headers)["stargazers_count"]
+        if type(stars) is not int or stars < 0:
+            raise ValueError("invalid star count")
+        live["prism_stars"] = stars
     except Exception as e:
         print(f"warn: prism stars: {e}", file=sys.stderr)
     if token:
@@ -788,22 +806,60 @@ def refresh_live() -> dict:
             req = urllib.request.Request("https://api.github.com/graphql", data=json.dumps(q).encode(),
                                          headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json", "User-Agent": "profile-cards"})
             with urllib.request.urlopen(req, timeout=20) as r:
-                live["contributions"] = json.load(r)["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+                contributions = json.load(r)["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+            if type(contributions) is not int or contributions < 0:
+                raise ValueError("invalid contribution count")
+            live["contributions"] = contributions
         except Exception as e:
             print(f"warn: contributions: {e}", file=sys.stderr)
-    LIVE_FILE.write_text(json.dumps(live, indent=2) + "\n")
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=LIVE_FILE.parent,
+                                         prefix=LIVE_FILE.name + ".", suffix=".tmp", delete=False) as f:
+            temporary = Path(f.name)
+            f.write(json.dumps(live, indent=2) + "\n")
+        os.replace(temporary, LIVE_FILE)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
     return live
 
 
 def load_live() -> dict:
-    live = json.loads(json.dumps(DEFAULT_LIVE))  # deep copy: refresh_live mutates the nested dicts
-    if LIVE_FILE.exists():
-        live.update(json.loads(LIVE_FILE.read_text()))
+    live = {"versions": {}, "downloads": {}, "prism_stars": DEFAULT_LIVE["prism_stars"],
+            "contributions": DEFAULT_LIVE["contributions"]}
+    if not LIVE_FILE.exists():
+        return live
+    try:
+        saved = json.loads(LIVE_FILE.read_text())
+    except (OSError, UnicodeError, json.JSONDecodeError) as e:
+        print(f"warn: live cache: {e}", file=sys.stderr)
+        return live
+    if not isinstance(saved, dict):
+        print("warn: live cache: expected an object", file=sys.stderr)
+        return live
+
+    versions = saved.get("versions")
+    if isinstance(versions, dict):
+        for _, name, _ in PACKAGES:
+            value = versions.get(name)
+            if valid_version(value):
+                live["versions"][name] = value
+    downloads = saved.get("downloads")
+    if isinstance(downloads, dict):
+        for _, name, _ in PACKAGES:
+            value = downloads.get(name)
+            if type(value) is int and value >= 0:
+                live["downloads"][name] = value
+    for key in ("prism_stars", "contributions"):
+        value = saved.get(key)
+        if type(value) is int and value >= 0:
+            live[key] = value
     return live
 
 
 def fmt_contributions(n: int) -> str:
-    return f"{(n // 500) * 500:,}+"
+    return f"{n:,}" if n < 500 else f"{(n // 500) * 500:,}+"
 
 
 # --------------------------------------------------------------------------- main
@@ -825,14 +881,14 @@ def build(live: dict):
         written.append((p.name, len(svg)))
 
     installs = sum(live["downloads"].get(name, 0) for _, name, _ in PACKAGES)
+    stats = [
+        ("1M+", "downloads on One4Wall"),
+        (f"{live['prism_stars']:,}", "GitHub stars on Prism"),
+        (fmt_contributions(live["contributions"]), "contributions last year"),
+        (fmt_thousands(installs), "pub.dev installs a month"),
+    ]
     for theme in THEMES:
         out("hero", theme, hero(theme))
-        stats = [
-            ("1M+", "downloads on One4Wall"),
-            (f"{live['prism_stars']:,}", "GitHub stars on Prism"),
-            (fmt_contributions(live["contributions"]), "contributions last year"),
-            (fmt_thousands(installs), "pub.dev installs a month"),
-        ]
         for i, (value, label) in enumerate(stats):
             out(f"stat-{i + 1}", theme, stat(theme, value, label, i))
         for key, name, desc, domain, _ in PRODUCTS:
@@ -841,7 +897,21 @@ def build(live: dict):
             out(f"pkg-{key}", theme, package(theme, key, name, desc, live["versions"].get(name)))
         for label, primary in CHIPS:
             out(f"chip-{label.lower()}", theme, chip(theme, label, primary))
+    sync_readme_stat_alts(stats)
     return written
+
+
+def sync_readme_stat_alts(stats):
+    readme_path = ROOT / "README.md"
+    markdown = readme_path.read_text()
+    original = markdown
+    for index, (value, label) in enumerate(stats, 1):
+        pattern = re.compile(rf'(<img\b(?=[^>]*\bsrc="assets/cards/stat-{index}-light\.svg")[^>]*\balt=")[^"]*(")')
+        markdown, count = pattern.subn(rf"\g<1>{value} {label}\g<2>", markdown)
+        if count != 1:
+            raise ValueError(f"expected one README image for stat-{index}, found {count}")
+    if markdown != original:
+        readme_path.write_text(markdown)
 
 
 if __name__ == "__main__":
