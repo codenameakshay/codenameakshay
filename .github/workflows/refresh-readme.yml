@@ -9,93 +9,35 @@ permissions:
   contents: write
 
 concurrency:
-  group: refresh-readme-${{ github.ref }}
-  cancel-in-progress: false
+  group: refresh-readme
 
 jobs:
-  refresh-readme:
-    name: Refresh the README and animated cards
+  refresh:
+    name: Refresh the Writing list and the animated cards
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # commits and pushes on its own; a Medium outage must not block the card refresh
+      - uses: gautamkrishnar/blog-post-workflow@v1
+        continue-on-error: true
         with:
-          ref: ${{ github.ref }}
+          feed_list: "https://medium.com/feed/@codenameakshay"
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install fonttools brotli
-      - uses: gautamkrishnar/blog-post-workflow@v1
-        id: blog
-        with:
-          feed_list: "https://medium.com/feed/@codenameakshay"
-          skip_commit: true
-          enable_keepalive: false
-
-      - name: Discard partial writing list update
-        if: ${{ failure() && steps.blog.outcome == 'failure' && !cancelled() }}
-        run: git restore --source=HEAD --staged --worktree -- README.md
-
-      - name: Rebuild cards with live numbers
-        id: cards
-        if: ${{ !cancelled() }}
-        run: python scripts/cards/build.py --live
+      - run: python scripts/cards/build.py --live
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Commit refreshed cards
-        if: ${{ !cancelled() && steps.cards.outcome == 'success' }}
-        env:
-          BLOG_STEP_OUTCOME: ${{ steps.blog.outcome }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          check_blog_markers() {
-            awk '
-              $0 == "<!-- BLOG-POST-LIST:START -->" { starts++; start = NR }
-              $0 == "<!-- BLOG-POST-LIST:END -->" { ends++; end = NR }
-              END { exit !(starts == 1 && ends == 1 && start < end) }
-            ' "$1"
-          }
           git add README.md assets/cards scripts/cards/live.json
           if git diff --cached --quiet; then
-            echo "README and cards unchanged"
+            echo "cards unchanged"
           else
             git commit -m "chore: refresh cards with live numbers"
-            for attempt in 1 2 3; do
-              if git push origin "HEAD:$GITHUB_REF"; then
-                exit 0
-              fi
-              if [[ "$attempt" == 3 ]]; then
-                break
-              fi
-              if [[ "$BLOG_STEP_OUTCOME" == success ]]; then
-                check_blog_markers README.md
-                sed -n '/^<!-- BLOG-POST-LIST:START -->$/,/^<!-- BLOG-POST-LIST:END -->$/p' README.md > "$RUNNER_TEMP/blog.list"
-              fi
-              git fetch origin "refs/heads/$GITHUB_REF_NAME:refs/remotes/origin/$GITHUB_REF_NAME"
-              git reset --hard "refs/remotes/origin/$GITHUB_REF_NAME"
-              if [[ "$BLOG_STEP_OUTCOME" == success ]]; then
-                check_blog_markers README.md
-                awk -v list="$RUNNER_TEMP/blog.list" '
-                  $0 == "<!-- BLOG-POST-LIST:START -->" {
-                    while ((getline line < list) > 0) print line
-                    close(list)
-                    replacing = 1
-                    next
-                  }
-                  replacing && $0 == "<!-- BLOG-POST-LIST:END -->" { replacing = 0; next }
-                  !replacing { print }
-                ' README.md > "$RUNNER_TEMP/README.md"
-                mv "$RUNNER_TEMP/README.md" README.md
-              fi
-              python scripts/cards/build.py --live
-              git add README.md assets/cards scripts/cards/live.json
-              if ! git diff --cached --quiet; then
-                git commit -m "chore: refresh cards with live numbers"
-              fi
-            done
-            echo "could not push refreshed cards after 3 attempts" >&2
-            exit 1
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
           fi

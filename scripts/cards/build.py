@@ -20,7 +20,6 @@ import os
 import random
 import re
 import sys
-import tempfile
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
@@ -771,33 +770,19 @@ def fetch_json(url: str, headers: dict | None = None):
         return json.load(r)
 
 
-def valid_version(value) -> bool:
-    return (isinstance(value, str)
-            and re.fullmatch(r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?", value) is not None
-            and FONTS.measure("v" + value, 500, 10) + 14 <= COL - 44)
-
-
 def refresh_live() -> dict:
     live = load_live()  # start from the last good numbers; a failed fetch keeps them
     for _, name, _ in PACKAGES:
         try:
             version = fetch_json(f"https://pub.dev/api/packages/{name}")["latest"]["version"]
             downloads = fetch_json(f"https://pub.dev/api/packages/{name}/score")["downloadCount30Days"]
-            if not valid_version(version):
-                raise ValueError("invalid version")
-            if type(downloads) is not int or downloads < 0:
-                raise ValueError("invalid download count")
-            live["versions"][name] = version
-            live["downloads"][name] = downloads
+            live["versions"][name], live["downloads"][name] = version, downloads
         except Exception as e:  # keep going; a stale number beats a broken build
             print(f"warn: pub.dev {name}: {e}", file=sys.stderr)
     token = os.environ.get("GITHUB_TOKEN")
     gh_headers = {"Authorization": f"Bearer {token}"} if token else {}
     try:
-        stars = fetch_json("https://api.github.com/repos/Hash-Studios/Prism", gh_headers)["stargazers_count"]
-        if type(stars) is not int or stars < 0:
-            raise ValueError("invalid star count")
-        live["prism_stars"] = stars
+        live["prism_stars"] = fetch_json("https://api.github.com/repos/Hash-Studios/Prism", gh_headers)["stargazers_count"]
     except Exception as e:
         print(f"warn: prism stars: {e}", file=sys.stderr)
     if token:
@@ -806,55 +791,17 @@ def refresh_live() -> dict:
             req = urllib.request.Request("https://api.github.com/graphql", data=json.dumps(q).encode(),
                                          headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json", "User-Agent": "profile-cards"})
             with urllib.request.urlopen(req, timeout=20) as r:
-                contributions = json.load(r)["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
-            if type(contributions) is not int or contributions < 0:
-                raise ValueError("invalid contribution count")
-            live["contributions"] = contributions
+                live["contributions"] = json.load(r)["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
         except Exception as e:
             print(f"warn: contributions: {e}", file=sys.stderr)
-    temporary = None
-    try:
-        with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=LIVE_FILE.parent,
-                                         prefix=LIVE_FILE.name + ".", suffix=".tmp", delete=False) as f:
-            temporary = Path(f.name)
-            f.write(json.dumps(live, indent=2) + "\n")
-        os.replace(temporary, LIVE_FILE)
-    finally:
-        if temporary is not None:
-            temporary.unlink(missing_ok=True)
+    LIVE_FILE.write_text(json.dumps(live, indent=2) + "\n")
     return live
 
 
 def load_live() -> dict:
-    live = {"versions": {}, "downloads": {}, "prism_stars": DEFAULT_LIVE["prism_stars"],
-            "contributions": DEFAULT_LIVE["contributions"]}
-    if not LIVE_FILE.exists():
-        return live
-    try:
-        saved = json.loads(LIVE_FILE.read_text())
-    except (OSError, UnicodeError, json.JSONDecodeError) as e:
-        print(f"warn: live cache: {e}", file=sys.stderr)
-        return live
-    if not isinstance(saved, dict):
-        print("warn: live cache: expected an object", file=sys.stderr)
-        return live
-
-    versions = saved.get("versions")
-    if isinstance(versions, dict):
-        for _, name, _ in PACKAGES:
-            value = versions.get(name)
-            if valid_version(value):
-                live["versions"][name] = value
-    downloads = saved.get("downloads")
-    if isinstance(downloads, dict):
-        for _, name, _ in PACKAGES:
-            value = downloads.get(name)
-            if type(value) is int and value >= 0:
-                live["downloads"][name] = value
-    for key in ("prism_stars", "contributions"):
-        value = saved.get(key)
-        if type(value) is int and value >= 0:
-            live[key] = value
+    live = json.loads(json.dumps(DEFAULT_LIVE))  # deep copy: refresh_live mutates the nested dicts
+    if LIVE_FILE.exists():
+        live.update(json.loads(LIVE_FILE.read_text()))
     return live
 
 
