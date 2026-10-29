@@ -10,15 +10,15 @@
     "secure_content": "3.0.0"
   },
   "downloads": {
-    "ai_sdk_dart": 563,
-    "ai_sdk_flutter_ui": 444,
-    "dart_tui": 7046,
+    "ai_sdk_dart": 567,
+    "ai_sdk_flutter_ui": 445,
+    "dart_tui": 6824,
     "dart_minify": 195,
-    "beui": 265,
-    "flutter_floating_bottom_bar": 16121,
-    "async_wallpaper": 1445,
-    "secure_content": 1643
+    "beui": 269,
+    "flutter_floating_bottom_bar": 16619,
+    "async_wallpaper": 1474,
+    "secure_content": 1678
   },
   "prism_stars": 667,
-  "contributions": 14694
+  "contributions": 15022
 }
