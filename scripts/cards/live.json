@@ -2,7 +2,7 @@
   "versions": {
     "ai_sdk_dart": "3.1.0",
     "ai_sdk_flutter_ui": "3.1.0",
-    "dart_tui": "3.0.0",
+    "dart_tui": "3.1.0",
     "dart_minify": "0.2.1",
     "beui": "3.1.0",
     "flutter_floating_bottom_bar": "3.1.0",
@@ -10,15 +10,15 @@
     "secure_content": "3.1.1"
   },
   "downloads": {
-    "ai_sdk_dart": 351,
-    "ai_sdk_flutter_ui": 219,
-    "dart_tui": 4927,
-    "dart_minify": 71,
-    "beui": 399,
-    "flutter_floating_bottom_bar": 17108,
-    "async_wallpaper": 2356,
-    "secure_content": 1525
+    "ai_sdk_dart": 355,
+    "ai_sdk_flutter_ui": 225,
+    "dart_tui": 4988,
+    "dart_minify": 75,
+    "beui": 405,
+    "flutter_floating_bottom_bar": 16682,
+    "async_wallpaper": 2288,
+    "secure_content": 1464
   },
   "prism_stars": 679,
-  "contributions": 19822
+  "contributions": 19937
 }
